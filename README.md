@@ -1,4 +1,4 @@
-# SecureUMLApp
+# WebApp
 Application mange hospitals with RBAC
 
 # Version
