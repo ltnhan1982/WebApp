@@ -85,4 +85,20 @@ public class PatientRecordController {
         patientService.editPatientRecord(patientRecordDTO, patient, model);
         return "editPatientRecord";
     }
+
+    @GetMapping("/patientRecord/update/")
+    @PreAuthorize("hasRole('PATIENT')")
+    public String showPatientRecordForPatient(@ModelAttribute("patientRecord") @Valid PatientRecordDTO patientRecordDTO, Model model) {
+        User user = userService.getUserAth();
+        Patient patient = new Patient();
+        if (ObjectUtils.isEmpty(user)) {
+            return "redirect:/";
+        }
+        if (!ObjectUtils.isEmpty(user.getPatient())) {
+            patient = user.getPatient();
+        }
+        policy.checkPermission(patient, "subject.patient.id == resource.id");
+        patientService.editPatientRecord(patientRecordDTO, patient, model);
+        return "patientRecord";
+    }
 }
