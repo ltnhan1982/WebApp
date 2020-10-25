@@ -29,7 +29,7 @@ public class PatientRecordController {
     @Autowired
     private ContextAwarePolicyEnforcement policy;
 
-    @GetMapping("/patientRecord/read/doctor/")
+    @GetMapping("/patientRecord/read/doctor")
     @PreAuthorize("hasRole('DOCTOR')")
     public String showPatientRecordByDoctor(Model model) {
         PatientRecordDTOList patientRecordList = patientService.showPatientRecordByDoctor(model);
@@ -40,7 +40,7 @@ public class PatientRecordController {
         return "patientRecordDoctor";
     }
 
-    @GetMapping("/patientRecord/read/")
+    @GetMapping("/patientRecord/read")
     @PreAuthorize("hasRole('PATIENT')")
     public String showPatientRecordForPatient(Model model) {
         User user = userService.getUserAth();
@@ -56,7 +56,7 @@ public class PatientRecordController {
         return "patientRecord";
     }
 
-    @GetMapping("/patientRecord/read/{id}/")
+    @GetMapping("/patientRecord/read/doctor/{id}")
     @PreAuthorize("hasRole('DOCTOR')")
     public String editUser(@PathVariable("id") Integer id, Model model) {
         Patient patient = patientService.findById(id);
@@ -68,7 +68,7 @@ public class PatientRecordController {
         return "editPatientRecord";
     }
 
-    @PostMapping("/patientRecord/create/")
+    @PostMapping("/patientRecord/create")
     @PreAuthorize("hasRole('RECEPTIONIST')")
     public RedirectView createdPatientRecord(@ModelAttribute("patientRecordDTO") @Valid PatientRecordDTO patientRecordDTO,
                                              RedirectAttributes model) {
@@ -76,7 +76,7 @@ public class PatientRecordController {
         return new RedirectView("/patientRecord/create");
     }
 
-    @PostMapping("/patientRecord/update/{id}/")
+    @PostMapping("/patientRecord/update/{id}")
     @PreAuthorize("hasRole('DOCTOR')")
     public String editPatientRecord(@ModelAttribute("patientRecord") @Valid PatientRecordDTO patientRecordDTO,
                                     @PathVariable("id") Integer id, Model model) {
@@ -86,7 +86,7 @@ public class PatientRecordController {
         return "editPatientRecord";
     }
 
-    @GetMapping("/patientRecord/update/")
+    @GetMapping("/patientRecord/update")
     @PreAuthorize("hasRole('PATIENT')")
     public String showPatientRecordForPatient(@ModelAttribute("patientRecord") @Valid PatientRecordDTO patientRecordDTO, Model model) {
         User user = userService.getUserAth();

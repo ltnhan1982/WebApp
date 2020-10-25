@@ -95,7 +95,7 @@
                                             <td th:text="${patientRecord.numberPhone}"></td>
                                             <td th:text="${patientRecord.address}"></td>
                                             <td th:text="${patientRecord.sick}"></td>
-                                            <td><a th:href="@{{id}(id=${patientRecord.id})}"
+                                            <td><a th:href="@{doctor/{id}(id=${patientRecord.id})}"
                                                    class="btn btn-success btn-sm"><i
                                                     class="fas fa-pencil-square-o"></i></a></td>
                                         </tr>
