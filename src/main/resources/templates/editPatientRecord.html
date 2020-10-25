@@ -57,31 +57,31 @@
         <div class="content">
             <div class="container-fluid">
                 <!--                <p color="red" th:if="${errorUserName}" class="error">User name is exits!</p>-->
-                <div class="row">
-                    <h4>Xem hồ sơ bệnh nhân tại bệnh viện khác.</h4>
-                </div>
-                <div class="row">
-                    <form th:action="@{/patientRecord/read/hospital}"
-                          th:object="${id}"
-                          method="get"
-                          enctype="utf8">
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <div class="input-group">
-                                    <select name="id">
-                                        <option th:value="${patientRecord.idPatient}"><td th:text="${hospitalCurrent}"></td></option>
-                                        <hr>
-                                        <option th:each="patientRecord : ${patientRecordHospitalOthers}"
-                                                th:value="${patientRecord.id}"
-                                                th:utext="${patientRecord.hospital.type}"/>
-                                    </select>
-                                </div>
-                                <button type="submit" class="btn btn-success submitBtn">Show</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <hr>
+<!--                <div class="row">-->
+<!--                    <h4>Xem hồ sơ bệnh nhân tại bệnh viện khác.</h4>-->
+<!--                </div>-->
+<!--                <div class="row">-->
+<!--                    <form th:action="@{/patientRecord/read/hospital}"-->
+<!--                          th:object="${id}"-->
+<!--                          method="get"-->
+<!--                          enctype="utf8">-->
+<!--                        <div class="row">-->
+<!--                            <div class="form-group col-md-6">-->
+<!--                                <div class="input-group">-->
+<!--                                    <select name="id">-->
+<!--                                        <option th:value="${patientRecord.idPatient}"><td th:text="${hospitalCurrent}"></td></option>-->
+<!--                                        <hr>-->
+<!--                                        <option th:each="patientRecord : ${patientRecordHospitalOthers}"-->
+<!--                                                th:value="${patientRecord.id}"-->
+<!--                                                th:utext="${patientRecord.hospital.type}"/>-->
+<!--                                    </select>-->
+<!--                                </div>-->
+<!--                                <button type="submit" class="btn btn-success submitBtn">Show</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--                <hr>-->
                 <div class="row">
                     <div class="form">
                         <form th:action="@{/patientRecord/update/{id}(id=${patientRecord.idPatient})}" method="post"
