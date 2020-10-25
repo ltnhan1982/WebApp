@@ -48,7 +48,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/patientRecord/create/")
+    @GetMapping("/patientRecord/create")
     @PreAuthorize("hasRole('RECEPTIONIST')")
     public String getFormPatientRecord(Model model) {
         userService.showDoctors(model);
